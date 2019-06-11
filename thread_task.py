@@ -60,7 +60,7 @@ class Task(threading.Thread):
                           'pip': socket.gethostbyname(socket.getfqdn(socket.gethostname())),
                           'cstate': 1}
 
-                print('插入容器',response.json())
+                print('insert container',response.json())
 
 
             except Exception as e:
@@ -87,7 +87,7 @@ class Task(threading.Thread):
                                     params={'mip': self.addr[0], 'port': self.addr[1],
                                             'cstate': 2})
 
-            print('改变状态',response.json())
+            print('change status',response.json())
 
             print(data)
             self.socket.send(data.encode())
@@ -113,7 +113,7 @@ class Task(threading.Thread):
                                         params={'mip': self.addr[0], 'port': self.addr[1],
                                                 'cstate': 1})
 
-                print('改变状态', response.json())
+                print('change status',response.json())
 
                 self.socket.close()
                 break
