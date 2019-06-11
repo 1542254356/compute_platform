@@ -123,19 +123,19 @@ if __name__ == '__main__':
                             else:
                                 print("feedback is none!")
                         
-                        # except AttributeError:
-                        #     with open('hpc.log', 'a') as log:
-                        #         print('iteration', iteration,
-                        #             'batch', batch, 'on ', t.addr,
-                        #              '\nthread feedback is illegal!',
-                        #              file=log)
-                        # except Exception as e:
-                        #     print(e)
-                        #     with open('hpc.log', 'a') as log:
-                        #         print('iteration', iteration,
-                        #             'batch', batch, '\n',
-                        #              e, '\nthread may not terminated properly...',
-                        #              file=log)
+                        except AttributeError:
+                            with open('hpc.log', 'a') as log:
+                                print('iteration', iteration,
+                                    'batch', batch, 'on ', t.addr,
+                                     '\nthread feedback is illegal!',
+                                     file=log)
+                        except Exception as e:
+                            print(e)
+                            with open('hpc.log', 'a') as log:
+                                print('iteration', iteration,
+                                    'batch', batch, '\n',
+                                     e, '\nthread may not terminated properly...',
+                                     file=log)
 
                             # sys.exit(2)
                         print('remove thread ', t.thread_number)
