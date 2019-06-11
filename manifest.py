@@ -8,7 +8,7 @@ _host_port = {
     #'3d04': ('192.168.1.142', 2974)
 #    , 'robocup05': ('192.168.1.128', 2974)
 }
-UI_HOST = "http://192.168.1.156:8652"
+UI_HOST = "http://192.168.1.100:8652"
 
 # CONST VARIABLES
 WALK_RESULT_FILE_NAME='walkout'
