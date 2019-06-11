@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import threading
 import json
 from time import sleep
@@ -41,12 +42,13 @@ class Task(threading.Thread):
         return ip
         
     def run(self):
+
         try_times = 1
         while True:
             try:
                 self.socket.connect(self.addr)
 
-                print('iphhhh',self.get_host_ip())
+                print('ip:',self.get_host_ip())
 
                 response = requests.get(UI_HOST + '/container/insert',
                                         params={'mip': self.addr[0],
@@ -64,7 +66,7 @@ class Task(threading.Thread):
             except Exception as e:
                 # self.socket.close()
 #                print('error occured at ', self.addr)
-                print(e)
+                print("67:"+str(e))
                 if try_times < 50:
                     try_times += 1
                     continue

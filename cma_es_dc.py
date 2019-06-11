@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 import cma
 import atexit
 import socket
@@ -53,6 +54,8 @@ if __name__ == '__main__':
     iteration =0
     try:
         while True:
+            if iteration ==MAX_ITER_NUM:
+                break
             iteration += 1
             solutions = es.ask()
             # if not convert to list, `numpy.ndarray` will occur errors!
@@ -120,18 +123,20 @@ if __name__ == '__main__':
                             else:
                                 print("feedback is none!")
                         
-                        except AttributeError:
-                            with open('hpc.log', 'a') as log:
-                                print('iteration', iteration,
-                                    'batch', batch, 'on ', t.addr,
-                                     '\nthread feedback is illegal!',
-                                     file=log)
-                        except Exception as e:
-                            with open('hpc.log', 'a') as log:
-                                print('iteration', iteration,
-                                    'batch', batch, '\n',
-                                     e, '\nthread may not terminated properly...',
-                                     file=log)
+                        # except AttributeError:
+                        #     with open('hpc.log', 'a') as log:
+                        #         print('iteration', iteration,
+                        #             'batch', batch, 'on ', t.addr,
+                        #              '\nthread feedback is illegal!',
+                        #              file=log)
+                        # except Exception as e:
+                        #     print(e)
+                        #     with open('hpc.log', 'a') as log:
+                        #         print('iteration', iteration,
+                        #             'batch', batch, '\n',
+                        #              e, '\nthread may not terminated properly...',
+                        #              file=log)
+
                             # sys.exit(2)
                         print('remove thread ', t.thread_number)
                         # remove dead thread and add new thread
@@ -172,4 +177,6 @@ if __name__ == '__main__':
             c.close()
         #store_data()
         sys.exit(1)
+
+
     
