@@ -26,6 +26,7 @@ class Task(threading.Thread):
         self.thread_number = Task.total_thread_number
         print('create task thread {} with'.format(self.thread_number), self.addr)
         Task.total_thread_number += 1
+        self.cid='1'
 
     def get_host_ip(self):
         """
@@ -61,6 +62,7 @@ class Task(threading.Thread):
                           'cstate': 1}
 
                 print('insert container',response.json())
+                self.cid=response.json()
 
 
             except Exception as e:
@@ -77,7 +79,7 @@ class Task(threading.Thread):
             data = json.dumps(list(self.param_list))
 
             response = requests.get(UI_HOST + '/flow/insert',
-                                    params={'cid': 1, 'param': str(data), 'result': '', 'lable': '',
+                                    params={'cid': self.cid, 'param': str(data), 'result': '', 'lable': '',
                                             'fstate': 1})
 
             #print(response.json())
