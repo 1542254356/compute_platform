@@ -17,6 +17,8 @@ clients = {
     h: socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     for h in HOST
 }
+response = requests.get(UI_HOST + '/container/deleteTable')
+response = requests.get(UI_HOST + '/flow/deleteTable')
 temp_pool = []
 solved_solutions = []
 solved_result = []
@@ -173,6 +175,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt as e:
         
         print('\nreceive terminated signal, exit...\nPlease wait...')
+
         for c in clients.values():
             c.close()
         #store_data()
